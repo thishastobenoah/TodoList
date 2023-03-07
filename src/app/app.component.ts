@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from 'src/Todo';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo';
+
+  newTask:string="";
+
+  task1:Todo = {task:"Vacuum", completed:false}
+  task2:Todo = {task:"Sweep", completed:false}
+  task3:Todo = {task:"Mop", completed:false}
+
+  todoList:Todo[] = [this.task1, this.task2, this.task3];
+
+  completeTask (todo:Todo):void{
+    todo.completed = true;
+  }
+  removeTask(todo:Todo):void{
+    this.todoList.splice(this.todoList.indexOf(todo), 1);
+  }
+
+  addTask():void{
+    let inputTask:Todo =  {task:this.newTask, completed:false}
+    this.todoList.push(inputTask);
+  }
 }
