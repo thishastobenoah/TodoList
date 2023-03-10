@@ -9,7 +9,6 @@ import { Todo } from 'src/Todo';
 export class AppComponent {
   title = 'todo';
 
-  newTask:string="";
 
   task1:Todo = {task:"Vacuum", completed:false}
   task2:Todo = {task:"Sweep", completed:false}
@@ -17,15 +16,12 @@ export class AppComponent {
 
   todoList:Todo[] = [this.task1, this.task2, this.task3];
 
-  completeTask (todo:Todo):void{
-    todo.completed = true;
+  addFromChild(todo:Todo){
+    this.todoList.push(todo);
   }
+
   removeTask(todo:Todo):void{
     this.todoList.splice(this.todoList.indexOf(todo), 1);
   }
 
-  addTask():void{
-    let inputTask:Todo =  {task:this.newTask, completed:false}
-    this.todoList.push(inputTask);
-  }
 }

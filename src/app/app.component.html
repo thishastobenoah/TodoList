@@ -2,23 +2,25 @@
 
 <h2>To-Do List
     <div *ngFor="let todo of todoList">
-        <p >
+        <app-todo [todoDisplay]="todo"></app-todo>
+        <!-- <p >
             {{todo.task}} 
             
         
         
             <button *ngIf="todo.completed === false" (click)="completeTask(todo)">complete</button> 
-            <button (click)="removeTask(todo)">X</button>
-        </p>
-
+           
+        </p> -->
+            <button (click)="removeTask(todo)">X</button> 
     </div>
     <br/>
 <h1>Add Task</h1>
-    <form #userForm="ngForm">
-        <label></label>
-        <input name="newTask" type="text" [(ngModel)]="newTask"/>
-        <br/>
-        <button (click)="addTask()">Add</button>
-    </form>
+    <app-todo-form (newTodoEvent)="addFromChild($event)"></app-todo-form>
+    
 </h2>
+
+
+
+<router-outlet></router-outlet>
+
 </body>
